@@ -8,6 +8,17 @@
   </head>
 
   <body>
+    <header class="site-header">
+      <a href="index.html" class="brand">Kopi Kampung</a>
+      <nav aria-label="Navigasi Utama">
+        <ul class="nav-list">
+          <li><a href="index.html" aria-current="page">Beranda</a></li>
+          <li><a href="tentang.html">Tentang Kami</a></li>
+          <li><a href="#kontak">Kontak Singkat</a></li>
+        </ul>
+      </nav>
+    </header>
+
     <main class="page">
 
       <section class="hero">
@@ -24,17 +35,75 @@
         </button>
       </section>
 
-      <section aria-labelledby="produk-title">
+      <section class="box" aria-labelledby="produk-title">
         <h2 id="produk-title">Produk Unggulan</h2>
 
-        <ul class="products">
-          <li>Kopi Americano - Rp10.000</li>
-          <li>Cold Brew Aren - Rp25.000</li>
-          <li>Kopi Susu - Rp15.000</li>
+        <div class="products">
+          <article class="product-item">
+            <h3>Kopi Americano</h3>
+            <p>Rp10.000</p>
+          </article>
+
+          <article class="product-item">
+            <h3>Cold Brew Aren</h3>
+            <p>Rp25.000</p>
+          </article>
+
+          <article class="product-item">
+            <h3>Kopi Susu</h3>
+            <p>Rp15.000</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="box" aria-labelledby="jam-buka-title">
+        <h2 id="jam-buka-title">Jam Buka</h2>
+
+        <ul class="schedule">
+          <li>
+            <span class="day">Senin - Jumat</span>
+            <span class="time">09.00 - 22.00 WIB</span>
+          </li>
+          <li>
+            <span class="day">Sabtu - Minggu</span>
+            <span class="time">10.00 - 23.00 WIB</span>
+          </li>
+        </ul>
+      </section>
+
+      <section class="box" aria-labelledby="lokasi-title">
+        <h2 id="lokasi-title">Lokasi</h2>
+        <p>Batang, Jawa Tengah</p>
+      </section>
+
+      <section id="kontak" class="box" aria-labelledby="kontak-title">
+        <h2 id="kontak-title">Kontak Singkat</h2>
+        <p>
+          Hubungi kami untuk pemesanan, informasi menu, atau kemitraan UMKM:
+        </p>
+        <ul class="contact-list">
+          <li>
+            <strong>Alamat:</strong> Batang, Jawa Tengah
+          </li>
+          <li>
+            <strong>Jam Layanan:</strong> Senin - Jumat 09.00 - 22.00 WIB, Sabtu - Minggu 10.00 - 23.00 WIB
+          </li>
+          <li>
+            <strong>WhatsApp:</strong>
+            <a href="https://wa.me/6281234567890" target="_blank" rel="noopener noreferrer">Hubungi WhatsApp Kopi Kampung</a>
+          </li>
+          <li>
+            <strong>Email:</strong>
+            <a href="mailto:kontak@kopikampung.com">Kirim Email ke Kopi Kampung</a>
+          </li>
         </ul>
       </section>
 
     </main>
+
+    <footer class="site-footer">
+      <p>&copy; 2026 Kopi Kampung - UMKM Batang</p>
+    </footer>
 
     <script src="js/script.js"></script>
   </body>

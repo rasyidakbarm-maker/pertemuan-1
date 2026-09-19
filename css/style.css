@@ -25,7 +25,73 @@ body {
 }
 
 .products {
-  padding-left: 1.2rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+  margin-top: 16px;
+}
+
+.product-item {
+  background: #fdfbf7;
+  border: 1px solid #ebdccd;
+  border-radius: 12px;
+  padding: 16px;
+}
+
+.product-item h3 {
+  margin: 0 0 8px;
+  font-size: 1.15rem;
+  color: #4a2511;
+}
+
+.product-item p {
+  margin: 0;
+  font-weight: 700;
+  color: #6f3b1f;
+}
+
+section {
+  margin-top: 32px;
+}
+
+.box {
+  background: #ffffff;
+  padding: 24px;
+  border-radius: 16px;
+  border: 1px solid #e5dbce;
+  box-shadow: 0 4px 12px rgba(111, 59, 31, 0.06);
+}
+
+.box h2 {
+  margin-top: 0;
+  margin-bottom: 16px;
+}
+
+.box p:last-child,
+.box ul:last-child {
+  margin-bottom: 0;
+}
+
+.schedule {
+  list-style: none;
+  padding: 0;
+  margin: 12px 0 0;
+  max-width: 380px;
+}
+
+.schedule li {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 0;
+  border-bottom: 1px dashed #c4b5a5;
+}
+
+.schedule li:last-child {
+  border-bottom: none;
+}
+
+.schedule .time {
+  font-weight: 700;
 }
 
 button {
@@ -36,4 +102,109 @@ button {
   background: #ffd166;
   border: 0;
   border-radius: 999px;
+}
+
+/* Navigasi Utama */
+.site-header {
+  max-width: 920px;
+  margin: 0 auto;
+  padding: 24px 20px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.brand {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: #6f3b1f;
+  text-decoration: none;
+}
+
+.nav-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.nav-list a {
+  display: inline-block;
+  color: #6f3b1f;
+  font-weight: 700;
+  text-decoration: none;
+  padding: 8px 16px;
+  border-radius: 999px;
+  background: #eedfd2;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.nav-list a:hover {
+  background: #e2cbba;
+}
+
+.nav-list a[aria-current="page"] {
+  background: #6f3b1f;
+  color: #ffffff;
+}
+
+/* Aksesibilitas Focus Keyboard */
+:focus-visible {
+  outline: 3px solid #6f3b1f;
+  outline-offset: 3px;
+}
+
+.hero :focus-visible {
+  outline-color: #ffd166;
+}
+
+a:focus,
+button:focus {
+  outline: 3px solid #6f3b1f;
+  outline-offset: 3px;
+}
+
+/* Kontak Singkat */
+.contact-list {
+  list-style: none;
+  padding: 0;
+  margin: 16px 0 0;
+}
+
+.contact-list li {
+  padding: 6px 0;
+}
+
+.contact-list a {
+  color: #6f3b1f;
+  font-weight: 700;
+  text-decoration: underline;
+}
+
+.contact-list a:hover {
+  color: #3e1e0e;
+}
+
+/* Gambar Informatif */
+.about-image {
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  border-radius: 16px;
+  margin: 16px 0;
+  display: block;
+}
+
+/* Footer Landmark */
+.site-footer {
+  max-width: 920px;
+  margin: 24px auto 32px;
+  padding: 0 20px;
+  text-align: center;
+  color: #79665a;
+  font-size: 0.9rem;
 }
