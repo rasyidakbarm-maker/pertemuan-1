@@ -6,7 +6,7 @@ body {
 }
 
 .page {
-  max-width: 920px;
+  max-width: 920px; 
   margin: 0 auto;
   padding: 32px 20px;
 }
@@ -189,14 +189,52 @@ button:focus {
   color: #3e1e0e;
 }
 
-/* Gambar Informatif */
+/* Gambar Informatif & Figure */
+.about-figure {
+  margin: 16px 0;
+}
+
 .about-image {
   width: 100%;
   max-width: 100%;
   height: auto;
   border-radius: 16px;
-  margin: 16px 0;
   display: block;
+}
+
+.about-figure figcaption {
+  margin-top: 8px;
+  font-size: 0.88rem;
+  color: #79665a;
+  font-style: italic;
+}
+
+/* Audio Player */
+.audio-box {
+  margin-top: 24px;
+  padding: 16px;
+  background: #fdfbf7;
+  border: 1px solid #ebdccd;
+  border-radius: 12px;
+}
+
+.audio-box h3 {
+  margin: 0 0 10px;
+  font-size: 1rem;
+  color: #4a2511;
+}
+
+.audio-box audio {
+  width: 100%;
+  max-width: 450px;
+  display: block;
+}
+
+.audio-transcript {
+  margin: 10px 0 0;
+  font-size: 0.88rem;
+  color: #5c4538;
+  font-style: italic;
 }
 
 /* Footer Landmark */
@@ -207,4 +245,114 @@ button:focus {
   text-align: center;
   color: #79665a;
   font-size: 0.9rem;
+}
+
+/* Galeri Produk & Tabel Katalog */
+.galeri-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 20px;
+}
+
+.galeri-item {
+  margin: 0;
+  background: #fdfbf7;
+  border: 1px solid #ebdccd;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.galeri-item--baru {
+  border-color: #6f3b1f;
+  box-shadow: 0 0 0 2px rgba(111, 59, 31, 0.15);
+}
+
+.galeri-img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+  border-radius: 12px;
+  display: block;
+}
+
+.galeri-item figcaption {
+  padding: 12px 16px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+}
+
+.galeri-item figcaption strong {
+  flex: 1 1 100%;
+  font-size: 1rem;
+  color: #4a2511;
+}
+
+.galeri-harga {
+  font-weight: 700;
+  color: #6f3b1f;
+}
+
+.galeri-label-baru {
+  background: #ffd166;
+  color: #2f2118;
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 999px;
+}
+
+.galeri-note {
+  font-size: 0.85rem;
+  color: #79665a;
+  margin: 0 0 20px;
+  font-style: italic;
+}
+
+.tabel-wrapper {
+  overflow-x: auto;
+  margin-top: 16px;
+}
+
+.tabel-katalog {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.tabel-katalog caption {
+  text-align: left;
+  font-weight: 600;
+  padding-bottom: 8px;
+  color: #4a2511;
+}
+
+.tabel-katalog th,
+.tabel-katalog td {
+  border: 1px solid #d8c8bb;
+  padding: 10px;
+  text-align: left;
+  vertical-align: top;
+}
+
+.tabel-katalog thead th {
+  background: #f1e6dc;
+  font-weight: 700;
+  color: #4a2511;
+}
+
+.baris-baru {
+  background: #fff9ec;
+}
+
+.baris-baru th {
+  color: #6f3b1f;
+}
+
+.tabel-catatan {
+  font-size: 0.82rem;
+  color: #79665a;
+  margin: 16px 0 0;
+  font-style: italic;
 }

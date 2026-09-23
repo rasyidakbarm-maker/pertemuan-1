@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Galeri Produk - Kopi Kampung</title>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+
+  <body>
+    <header class="site-header">
+      <a href="index.html" class="brand">Kopi Kampung</a>
+      <nav aria-label="Navigasi Utama">
+        <ul class="nav-list">
+          <li><a href="index.html">Beranda</a></li>
+          <li><a href="tentang.html">Tentang Kami</a></li>
+          <li><a href="galeri.html" aria-current="page">Galeri</a></li>
+          <li><a href="produk.html">Katalog</a></li>
+          <li><a href="index.html#kontak">Kontak Singkat</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main class="page">
+
+      <section class="hero">
+        <p class="eyebrow">UMKM Batang</p>
+        <h1>Galeri Produk</h1>
+        <p>Lihat tampilan visual produk-produk unggulan kami yang dibuat dengan penuh cinta dari Batang.</p>
+      </section>
+
+      <section class="box" aria-labelledby="galeri-title">
+        <h2 id="galeri-title">Menu Kami</h2>
+        <p class="galeri-note">
+          Foto produk dikumpulkan dari dokumentasi kedai dan aset foto untuk keperluan pembelajaran praktikum.
+        </p>
+
+        <div class="galeri-grid">
+
+          <!-- Produk 1: Kopi Americano -->
+          <figure class="galeri-item">
+            <img
+              src="asset/americano.jpg"
+              alt="Segelas es kopi americano cokelat pekat dengan es batu dan sedotan bening di atas tatakan gelap"
+              class="galeri-img"
+              width="600"
+              height="400"
+            />
+            <figcaption>
+              <strong>Kopi Americano</strong>
+              <span class="galeri-harga">Rp10.000</span>
+            </figcaption>
+          </figure>
+
+          <!-- Produk 2: Cold Brew Aren -->
+          <figure class="galeri-item">
+            <img
+              src="asset/cold-brew-aren.jpg"
+              alt="Gelas tinggi berisi cold brew aren berlapis gula aren hitam di dasar, susu di atasnya, dengan sendok dan es batu"
+              class="galeri-img"
+              width="600"
+              height="400"
+            />
+            <figcaption>
+              <strong>Cold Brew Aren</strong>
+              <span class="galeri-harga">Rp25.000</span>
+            </figcaption>
+          </figure>
+
+          <!-- Produk 3: Kopi Susu -->
+          <figure class="galeri-item">
+            <img
+              src="asset/kopi-susu.png"
+              alt="Gelas plastik kopi susu dingin dengan es batu bertumpuk dan sedotan putih, gradasi warna coklat ke putih susu"
+              class="galeri-img"
+              width="600"
+              height="400"
+            />
+            <figcaption>
+              <strong>Kopi Susu</strong>
+              <span class="galeri-harga">Rp15.000</span>
+            </figcaption>
+          </figure>
+
+          <!-- Produk 4 (BARU): Kopi Tubruk Tradisional -->
+          <!--
+            Challenge srcset:
+            Idealnya disediakan dua ukuran gambar:
+              - kopi-tubruk-320.jpg  (~30 KB, lebar 320 px) untuk layar kecil
+              - kopi-tubruk-640.jpg  (~90 KB, lebar 640 px) untuk layar besar
+            Karena aset saat ini hanya ada satu file (pukaya.png ≈ 577 KB),
+            srcset di bawah menunjukkan cara penulisan yang benar menggunakan
+            satu file yang sama sebagai demonstrasi.
+          -->
+          <figure class="galeri-item galeri-item--baru">
+            <img
+              src="asset/kopi-tubruk.jpg"
+              srcset="asset/kopi-tubruk.jpg 320w,
+                      asset/kopi-tubruk.jpg 640w"
+              sizes="(max-width: 600px) 320px, 640px"
+              alt="Kopi hitam dituang ke cangkir putih di atas tatakan, dikelilingi biji kopi sangrai"
+              class="galeri-img"
+              width="600"
+              height="400"
+            />
+            <figcaption>
+              <strong>Kopi Tubruk Tradisional</strong>
+              <span class="galeri-harga">Rp8.000</span>
+              <span class="galeri-label-baru">Baru!</span>
+            </figcaption>
+          </figure>
+
+        </div>
+      </section>
+
+    </main>
+
+    <footer class="site-footer">
+      <p>&copy; 2026 Kopi Kampung - UMKM Batang</p>
+    </footer>
+  </body>
+</html>

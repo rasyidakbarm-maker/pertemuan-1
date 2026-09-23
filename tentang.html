@@ -14,6 +14,8 @@
         <ul class="nav-list">
           <li><a href="index.html">Beranda</a></li>
           <li><a href="tentang.html" aria-current="page">Tentang Kami</a></li>
+          <li><a href="galeri.html">Galeri</a></li>
+          <li><a href="produk.html">Katalog</a></li>
           <li><a href="index.html#kontak">Kontak Singkat</a></li>
         </ul>
       </nav>
@@ -33,11 +35,24 @@
         <p>
           Kopi Kampung lahir dari kecintaan kami terhadap kekayaan hasil perkebunan kopi di pedesaan Batang. Kami bermitra langsung dengan para petani lokal untuk memastikan setiap biji kopi dipetik saat matang sempurna dan diproses secara teliti.
         </p>
-        <img
-          src="asset/pukaya.png"
-          alt="Barista menyiapkan pesanan kopi di balik meja bar kafe dengan papan menu di dinding belakang"
-          class="about-image"
-        />
+        <figure class="about-figure">
+          <img
+            src="asset/pukaya.png"
+            alt="Barista menyiapkan pesanan kopi di balik meja bar kafe dengan papan menu di dinding belakang"
+            class="about-image"
+          />
+          <figcaption>Suasana kerja barista di balik meja bar kedai Kopi Kampung</figcaption>
+        </figure>
+
+        <div class="audio-box">
+          <h3>Dengarkan Cerita Kami</h3>
+          <audio controls preload="metadata">
+            <source src="asset/audio/cerita-umkm.ogg" type="audio/ogg" />
+          </audio>
+          <p class="audio-transcript">
+            <strong>Transkrip:</strong> "Halo, selamat datang di Kopi Kampung."
+          </p>
+        </div>
       </section>
 
       <section class="box" aria-labelledby="komitmen-title">
