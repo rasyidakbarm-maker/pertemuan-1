@@ -1,0 +1,245 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Formulir kontak dan preferensi Kopi Kampung UMKM Batang. Hubungi kami untuk informasi menu, paket kopi, dan kemitraan." />
+    <title>Kontak Kami - Kopi Kampung</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <script src="js/form.js" defer></script>
+  </head>
+
+  <body>
+    <header class="site-header">
+      <a href="index.html" class="brand">Kopi Kampung</a>
+      <nav aria-label="Navigasi Utama">
+        <ul class="nav-list">
+          <li><a href="index.html">Beranda</a></li>
+          <li><a href="tentang.html">Tentang Kami</a></li>
+          <li><a href="galeri.html">Galeri</a></li>
+          <li><a href="produk.html">Katalog</a></li>
+          <li><a href="kontak.html" aria-current="page">Kontak</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main class="page">
+      <section class="hero">
+        <p class="eyebrow">UMKM Batang</p>
+        <h1>Hubungi Kopi Kampung</h1>
+        <p>
+          Silakan kirimkan pesan, pertanyaan kemitraan, atau pesanan khusus Anda melalui formulir di bawah ini.
+        </p>
+      </section>
+
+      <section class="box" aria-labelledby="form-title">
+        <h2 id="form-title">Formulir Kontak &amp; Preferensi</h2>
+        <p>Lengkapi informasi berikut agar kami dapat melayani Anda dengan tepat.</p>
+
+        <form id="contactForm" class="contact-form">
+          <!-- Field 1: Nama Lengkap -->
+          <div class="form-group">
+            <label for="nama">Nama Lengkap</label>
+            <input
+              type="text"
+              id="nama"
+              name="nama"
+              placeholder="Masukkan nama lengkap Anda"
+              minlength="3"
+              required
+            />
+          </div>
+
+          <!-- Field 2: Alamat Email -->
+          <div class="form-group">
+            <label for="email">Alamat Email</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              placeholder="nama@email.com"
+              required
+            />
+          </div>
+
+          <!-- Field 3: Paket Diminati (Select Dropdown - Praktikum Terbimbing) -->
+          <div class="form-group">
+            <label for="paket">Paket Diminati</label>
+            <select id="paket" name="paket" required>
+              <option value="" disabled selected>-- Pilih salah satu paket --</option>
+              <option value="Paket Biji Kopi Sangrai">Paket Biji Kopi Sangrai (250g / 500g)</option>
+              <option value="Paket Kopi Siap Minum">Paket Kopi Siap Minum (Botol 1 Liter)</option>
+              <option value="Paket Kemitraan UMKM">Paket Kemitraan Reseller / UMKM</option>
+              <option value="Paket Konsultasi Barista">Paket Konsultasi / Pelatihan Seduh</option>
+            </select>
+          </div>
+
+          <!-- Field 4: Topik Pertanyaan (Radio Group - Praktikum Terbimbing) -->
+          <fieldset class="form-fieldset">
+            <legend>Topik Pertanyaan</legend>
+            <p class="fieldset-desc">Pilih kategori pertanyaan yang ingin Anda sampaikan:</p>
+
+            <div class="radio-group">
+              <div class="radio-item">
+                <input
+                  type="radio"
+                  id="topikMenu"
+                  name="topik"
+                  value="Informasi Menu & Produk"
+                  required
+                />
+                <label for="topikMenu">Informasi Menu &amp; Produk</label>
+              </div>
+
+              <div class="radio-item">
+                <input
+                  type="radio"
+                  id="topikKemitraan"
+                  name="topik"
+                  value="Kemitraan & Reseller"
+                  required
+                />
+                <label for="topikKemitraan">Kemitraan &amp; Reseller</label>
+              </div>
+
+              <div class="radio-item">
+                <input
+                  type="radio"
+                  id="topikEvent"
+                  name="topik"
+                  value="Pemesanan Acara / Catering"
+                  required
+                />
+                <label for="topikEvent">Pemesanan Acara / Catering</label>
+              </div>
+            </div>
+          </fieldset>
+
+          <!-- Field 5: Nomor WhatsApp (Input tel - Tugas Mandiri) -->
+          <div class="form-group">
+            <label for="whatsapp">Nomor WhatsApp</label>
+            <input
+              type="tel"
+              id="whatsapp"
+              name="whatsapp"
+              placeholder="Contoh: 081234567890"
+              pattern="[0-9]{10,15}"
+              title="Nomor WhatsApp harus berupa 10 hingga 15 digit angka (contoh: 081234567890)"
+              required
+            />
+            <small class="field-hint">Gunakan angka saja, panjang 10-15 digit.</small>
+          </div>
+
+          <!-- Field 6: Preferensi Waktu Kontak (Fieldset & Legend - Tugas Mandiri) -->
+          <fieldset class="form-fieldset">
+            <legend>Preferensi Waktu Kontak</legend>
+            <p class="fieldset-desc">Pilih waktu terbaik bagi kami untuk menghubungi WhatsApp Anda:</p>
+
+            <div class="radio-group">
+              <div class="radio-item">
+                <input
+                  type="radio"
+                  id="waktuPagi"
+                  name="waktuKontak"
+                  value="Pagi (09.00 - 12.00 WIB)"
+                  required
+                />
+                <label for="waktuPagi">Pagi (09.00 - 12.00 WIB)</label>
+              </div>
+
+              <div class="radio-item">
+                <input
+                  type="radio"
+                  id="waktuSiang"
+                  name="waktuKontak"
+                  value="Siang (12.00 - 15.00 WIB)"
+                  required
+                />
+                <label for="waktuSiang">Siang (12.00 - 15.00 WIB)</label>
+              </div>
+
+              <div class="radio-item">
+                <input
+                  type="radio"
+                  id="waktuSore"
+                  name="waktuKontak"
+                  value="Sore / Malam (15.00 - 21.00 WIB)"
+                  required
+                />
+                <label for="waktuSore">Sore / Malam (15.00 - 21.00 WIB)</label>
+              </div>
+            </div>
+          </fieldset>
+
+          <!-- Field 7: Pesan atau Keterangan -->
+          <div class="form-group">
+            <label for="pesan">Pesan atau Keterangan</label>
+            <textarea
+              id="pesan"
+              name="pesan"
+              rows="4"
+              placeholder="Tuliskan pesan atau pertanyaan Anda secara rinci..."
+              minlength="10"
+              required
+            ></textarea>
+            <small class="field-hint">Minimal 10 karakter.</small>
+          </div>
+
+          <!-- Tombol Submit -->
+          <div class="form-actions">
+            <button type="submit" id="submitBtn">Kirim Pesan</button>
+          </div>
+        </form>
+
+        <!-- Area Preview Ringan JavaScript -->
+        <div id="previewBox" class="preview-box" aria-live="polite" style="display: none;">
+          <h3>Ringkasan Pesan (Preview)</h3>
+          <p>Terima kasih! Berikut ringkasan data yang Anda masukkan:</p>
+          <dl class="preview-list">
+            <dt>Nama Lengkap:</dt>
+            <dd id="previewNama">-</dd>
+
+            <dt>Alamat Email:</dt>
+            <dd id="previewEmail">-</dd>
+
+            <dt>Paket Diminati:</dt>
+            <dd id="previewPaket">-</dd>
+
+            <dt>Topik Pertanyaan:</dt>
+            <dd id="previewTopik">-</dd>
+
+            <dt>Nomor WhatsApp:</dt>
+            <dd id="previewWhatsapp">-</dd>
+
+            <dt>Preferensi Waktu Kontak:</dt>
+            <dd id="previewWaktu">-</dd>
+
+            <dt>Pesan:</dt>
+            <dd id="previewPesan">-</dd>
+          </dl>
+        </div>
+      </section>
+
+      <!-- Informasi Kontak Alternatif -->
+      <section class="box" aria-labelledby="kontak-langsung-title">
+        <h2 id="kontak-langsung-title">Informasi Langsung Kedai</h2>
+        <ul class="contact-list">
+          <li><strong>Alamat:</strong> Batang, Jawa Tengah</li>
+          <li><strong>Jam Operasional:</strong> Setiap Hari 09.00 - 22.00 WIB</li>
+          <li>
+            <strong>WhatsApp Kedai:</strong>
+            <a href="https://wa.me/6281234567890" target="_blank" rel="noopener noreferrer">0812-3456-7890</a>
+          </li>
+          <li>
+            <strong>Email:</strong>
+            <a href="mailto:kontak@kopikampung.com">kontak@kopikampung.com</a>
+          </li>
+        </ul>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>&copy; 2026 Kopi Kampung - UMKM Batang</p>
+    </footer>
+  </body>
+</html>
