@@ -1,8 +1,99 @@
+:root {
+  /* ========================================================
+     TOKEN IDENTITAS UMKM KOPI KAMPUNG (P05)
+     ======================================================== */
+  /* Token Warna Berbasis Fungsi (Functional Color Tokens) */
+  --color-bg-page: #f6f0e8;         /* Latar belakang halaman utama */
+  --color-surface: #ffffff;         /* Latar belakang kontainer box */
+  --color-surface-card: #fdfbf7;    /* Latar belakang kartu item/produk */
+  --color-brand-primary: #6f3b1f;   /* Warna utama identitas UMKM (kopi sangrai hangat) */
+  --color-brand-dark: #4a2511;      /* Warna aksen gelap untuk judul */
+  --color-accent: #ffd166;          /* Warna aksen interaktif/tombol promo (emas hangat) */
+  --color-accent-hover: #f0c355;    /* Warna hover tombol promo */
+  --color-text-main: #2f2118;       /* Warna teks utama berkontras tinggi */
+  --color-text-muted: #79665a;      /* Warna teks pendukung */
+  --color-text-on-accent: #2f2118;  /* Warna teks kontras di atas latar aksen emas */
+  --color-text-on-primary: #ffffff; /* Warna teks kontras di atas latar brand primary */
+  --color-border: #ebdccd;          /* Garis batas kartu/komponen */
+  --color-focus: #6f3b1f;           /* Warna indikator fokus standar */
+  --color-focus-on-dark: #ffd166;   /* Warna indikator fokus pada latar gelap */
+  --color-shadow: rgba(111, 59, 31, 0.08);       /* Bayangan kontainer box */
+  --color-shadow-focus: rgba(111, 59, 31, 0.2);  /* Bayangan aksen item galeri */
+
+  /* Pasangan Token Radius & Spacing */
+  --radius-sm: 8px;                 /* Sudut tumpul kecil (input, badge) */
+  --radius-md: 16px;                /* Sudut tumpul sedang (kartu box, item) */
+  --radius-lg: 24px;                /* Sudut tumpul besar (hero banner) */
+  --radius-pill: 999px;             /* Radius bentuk kapsul/pil untuk tombol */
+
+  --spacing-xs: 4px;                /* Spacing berukuran ekstra kecil (pasangan spacing) */
+  --spacing-sm: 8px;                /* Spacing berukuran kecil */
+  --spacing-md: 16px;               /* Spacing berukuran sedang */
+  --spacing-lg: 24px;               /* Spacing berukuran besar (pasangan spacing) */
+
+  /* Token Tipografi & Aksesibilitas Baca */
+  --line-height-base: 1.6;          /* Jarak antarbaris teks isi */
+  --line-height-heading: 1.25;      /* Jarak antarbaris judul */
+  --measure-text: 65ch;             /* Batas panjang baris optimal untuk kenyamanan membaca */
+}
+
+/* ========================================================
+   VARIASI TEMA: DARK ROAST (TEMA MALAM IDENTITAS UMKM)
+   Dapat diaktifkan dengan class .theme-dark atau [data-theme="dark"]
+   ======================================================== */
+[data-theme="dark"],
+.theme-dark {
+  /* Revisi Token Warna Berbasis Fungsi untuk Tema Dark Roast */
+  --color-bg-page: #19120d;         /* Latar belakang halaman malam bernuansa kopi hitam */
+  --color-surface: #261c15;         /* Latar permukaan kontainer box */
+  --color-surface-card: #30241b;    /* Latar permukaan kartu produk/item */
+  --color-brand-primary: #d48b54;   /* Warna brand primer terang agar kontras di latar gelap */
+  --color-brand-dark: #f0dfd1;      /* Warna teks judul/heading cerah agar jelas terbaca */
+  --color-accent: #f5b041;          /* Warna aksen interaktif/tombol promo (emas hangat) */
+  --color-accent-hover: #e09e30;    /* Warna hover tombol promo di tema malam */
+  --color-text-main: #f7ede4;       /* Teks utama gading terang (kontras tinggi) */
+  --color-text-muted: #bfa99b;      /* Teks pendukung krem-abu */
+  --color-text-on-accent: #19120d;  /* Teks kontras tinggi (9,85:1) di atas aksen emas #f5b041 */
+  --color-text-on-primary: #19120d; /* Teks kontras tinggi (6,72:1) di atas brand primary #d48b54 */
+  --color-border: #443327;          /* Garis batas kartu/komponen bernuansa cokelat hangat gelap */
+  --color-focus: #f5b041;           /* Warna indikator fokus standar (kontras tinggi di latar gelap) */
+  --color-focus-on-dark: #19120d;   /* Indikator fokus di hero banner (kontras 6,72:1 di atas #d48b54) */
+  --color-shadow: rgba(0, 0, 0, 0.45);            /* Bayangan kontainer box tema gelap */
+  --color-shadow-focus: rgba(245, 176, 65, 0.25); /* Bayangan aksen item tema gelap */
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
-  color: #2f2118;
-  background: #f6f0e8;
+  color: var(--color-text-main);
+  background: var(--color-bg-page);
   font-family: Arial, sans-serif;
+  line-height: var(--line-height-base);
+}
+
+p {
+  line-height: var(--line-height-base);
+  max-width: var(--measure-text);
+}
+
+h1,
+h2,
+h3 {
+  line-height: var(--line-height-heading);
+}
+
+h1 {
+  font-size: 2rem;
+  margin-top: 0;
+}
+
+h2 {
+  font-size: 1.5rem;
 }
 
 .page {
@@ -13,13 +104,13 @@ body {
 
 .hero {
   padding: 36px;
-  color: white;
-  background: #6f3b1f;
-  border-radius: 24px;
+  color: var(--color-text-on-primary);
+  background: var(--color-brand-primary);
+  border-radius: var(--radius-lg);
 }
 
 .eyebrow {
-  margin: 0 0 8px;
+  margin: 0 0 var(--spacing-sm);
   letter-spacing: 0.14em;
   text-transform: uppercase;
 }
@@ -27,27 +118,27 @@ body {
 .products {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 16px;
-  margin-top: 16px;
+  gap: var(--spacing-md);
+  margin-top: var(--spacing-md);
 }
 
 .product-item {
-  background: #fdfbf7;
-  border: 1px solid #ebdccd;
-  border-radius: 12px;
-  padding: 16px;
+  background: var(--color-surface-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  padding: var(--spacing-md);
 }
 
 .product-item h3 {
-  margin: 0 0 8px;
+  margin: 0 0 var(--spacing-sm);
   font-size: 1.15rem;
-  color: #4a2511;
+  color: var(--color-brand-dark);
 }
 
 .product-item p {
   margin: 0;
   font-weight: 700;
-  color: #6f3b1f;
+  color: var(--color-brand-primary);
 }
 
 section {
@@ -55,16 +146,16 @@ section {
 }
 
 .box {
-  background: #ffffff;
-  padding: 24px;
-  border-radius: 16px;
-  border: 1px solid #e5dbce;
-  box-shadow: 0 4px 12px rgba(111, 59, 31, 0.06);
+  background: var(--color-surface);
+  padding: var(--spacing-lg);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border);
+  box-shadow: 0 4px 12px var(--color-shadow);
 }
 
 .box h2 {
   margin-top: 0;
-  margin-bottom: 16px;
+  margin-bottom: var(--spacing-md);
 }
 
 .box p:last-child,
@@ -82,8 +173,8 @@ section {
 .schedule li {
   display: flex;
   justify-content: space-between;
-  padding: 8px 0;
-  border-bottom: 1px dashed #c4b5a5;
+  padding: var(--spacing-sm) 0;
+  border-bottom: 1px dashed var(--color-border);
 }
 
 .schedule li:last-child {
@@ -96,12 +187,17 @@ section {
 
 button {
   padding: 12px 18px;
-  color: #2f2118;
+  color: var(--color-text-on-accent);
   font-weight: 700;
   cursor: pointer;
-  background: #ffd166;
+  background: var(--color-accent);
   border: 0;
-  border-radius: 999px;
+  border-radius: var(--radius-pill);
+  transition: background-color 0.2s, box-shadow 0.2s;
+}
+
+button:hover {
+  background: var(--color-accent-hover);
 }
 
 /* Navigasi Utama */
@@ -119,7 +215,7 @@ button {
 .brand {
   font-size: 1.25rem;
   font-weight: 800;
-  color: #6f3b1f;
+  color: var(--color-brand-primary);
   text-decoration: none;
 }
 
@@ -134,38 +230,38 @@ button {
 
 .nav-list a {
   display: inline-block;
-  color: #6f3b1f;
+  color: var(--color-brand-primary);
   font-weight: 700;
   text-decoration: none;
-  padding: 8px 16px;
-  border-radius: 999px;
-  background: #eedfd2;
+  padding: var(--spacing-sm) var(--spacing-md);
+  border-radius: var(--radius-pill);
+  background: var(--color-border);
   transition: background-color 0.2s, color 0.2s;
 }
 
 .nav-list a:hover {
-  background: #e2cbba;
+  background: var(--color-surface-card);
+  color: var(--color-brand-dark);
 }
 
 .nav-list a[aria-current="page"] {
-  background: #6f3b1f;
-  color: #ffffff;
+  background: var(--color-brand-primary);
+  color: var(--color-text-on-primary);
 }
 
 /* Aksesibilitas Focus Keyboard */
 :focus-visible {
-  outline: 3px solid #6f3b1f;
+  outline: 3px solid var(--color-focus);
   outline-offset: 3px;
 }
 
+:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* Penanganan Focus pada Elemen Berlatar Gelap (Hero) - Mengatasi Konflik Cascade/Specificity */
 .hero :focus-visible {
-  outline-color: #ffd166;
-}
-
-a:focus,
-button:focus {
-  outline: 3px solid #6f3b1f;
-  outline-offset: 3px;
+  outline-color: var(--color-focus-on-dark);
 }
 
 /* Kontak Singkat */
@@ -180,48 +276,48 @@ button:focus {
 }
 
 .contact-list a {
-  color: #6f3b1f;
+  color: var(--color-brand-primary);
   font-weight: 700;
   text-decoration: underline;
 }
 
 .contact-list a:hover {
-  color: #3e1e0e;
+  color: var(--color-brand-dark);
 }
 
 /* Gambar Informatif & Figure */
 .about-figure {
-  margin: 16px 0;
+  margin: var(--spacing-md) 0;
 }
 
 .about-image {
   width: 100%;
   max-width: 100%;
   height: auto;
-  border-radius: 16px;
+  border-radius: var(--radius-md);
   display: block;
 }
 
 .about-figure figcaption {
   margin-top: 8px;
   font-size: 0.88rem;
-  color: #79665a;
+  color: var(--color-text-muted);
   font-style: italic;
 }
 
 /* Audio Player */
 .audio-box {
-  margin-top: 24px;
-  padding: 16px;
-  background: #fdfbf7;
-  border: 1px solid #ebdccd;
-  border-radius: 12px;
+  margin-top: var(--spacing-lg);
+  padding: var(--spacing-md);
+  background: var(--color-surface-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
 }
 
 .audio-box h3 {
   margin: 0 0 10px;
   font-size: 1rem;
-  color: #4a2511;
+  color: var(--color-brand-dark);
 }
 
 .audio-box audio {
@@ -233,18 +329,23 @@ button:focus {
 .audio-transcript {
   margin: 10px 0 0;
   font-size: 0.88rem;
-  color: #5c4538;
+  color: var(--color-text-muted);
   font-style: italic;
 }
 
 /* Footer Landmark */
 .site-footer {
   max-width: 920px;
-  margin: 24px auto 32px;
+  margin: var(--spacing-lg) auto 32px;
   padding: 0 20px;
   text-align: center;
-  color: #79665a;
+  color: var(--color-text-muted);
   font-size: 0.9rem;
+}
+
+.site-footer p {
+  margin-inline: auto;
+  max-width: none;
 }
 
 /* Galeri Produk & Tabel Katalog */
@@ -256,15 +357,15 @@ button:focus {
 
 .galeri-item {
   margin: 0;
-  background: #fdfbf7;
-  border: 1px solid #ebdccd;
-  border-radius: 12px;
+  background: var(--color-surface-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
   overflow: hidden;
 }
 
 .galeri-item--baru {
-  border-color: #6f3b1f;
-  box-shadow: 0 0 0 2px rgba(111, 59, 31, 0.15);
+  border-color: var(--color-brand-primary);
+  box-shadow: 0 0 0 2px var(--color-shadow-focus);
 }
 
 .galeri-img {
@@ -272,41 +373,41 @@ button:focus {
   height: auto;
   aspect-ratio: 3 / 2;
   object-fit: cover;
-  border-radius: 12px;
+  border-radius: var(--radius-md);
   display: block;
 }
 
 .galeri-item figcaption {
-  padding: 12px 16px;
+  padding: 12px var(--spacing-md);
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: 6px;
+  gap: var(--spacing-xs);
 }
 
 .galeri-item figcaption strong {
   flex: 1 1 100%;
   font-size: 1rem;
-  color: #4a2511;
+  color: var(--color-brand-dark);
 }
 
 .galeri-harga {
   font-weight: 700;
-  color: #6f3b1f;
+  color: var(--color-brand-primary);
 }
 
 .galeri-label-baru {
-  background: #ffd166;
-  color: #2f2118;
+  background: var(--color-accent);
+  color: var(--color-text-on-accent);
   font-size: 0.75rem;
   font-weight: 700;
-  padding: 2px 8px;
-  border-radius: 999px;
+  padding: 2px var(--spacing-sm);
+  border-radius: var(--radius-pill);
 }
 
 .galeri-note {
   font-size: 0.85rem;
-  color: #79665a;
+  color: var(--color-text-muted);
   margin: 0 0 20px;
   font-style: italic;
 }
@@ -324,36 +425,36 @@ button:focus {
 .tabel-katalog caption {
   text-align: left;
   font-weight: 600;
-  padding-bottom: 8px;
-  color: #4a2511;
+  padding-bottom: var(--spacing-sm);
+  color: var(--color-brand-dark);
 }
 
 .tabel-katalog th,
 .tabel-katalog td {
-  border: 1px solid #d8c8bb;
+  border: 1px solid var(--color-border);
   padding: 10px;
   text-align: left;
   vertical-align: top;
 }
 
 .tabel-katalog thead th {
-  background: #f1e6dc;
+  background: var(--color-border);
   font-weight: 700;
-  color: #4a2511;
+  color: var(--color-brand-dark);
 }
 
 .baris-baru {
-  background: #fff9ec;
+  background: var(--color-surface-card);
 }
 
 .baris-baru th {
-  color: #6f3b1f;
+  color: var(--color-brand-primary);
 }
 
 .tabel-catatan {
   font-size: 0.82rem;
-  color: #79665a;
-  margin: 16px 0 0;
+  color: var(--color-text-muted);
+  margin: var(--spacing-md) 0 0;
   font-style: italic;
 }
 
@@ -373,7 +474,7 @@ button:focus {
 
 .form-group label {
   font-weight: 700;
-  color: #4a2511;
+  color: var(--color-brand-dark);
   font-size: 0.95rem;
 }
 
@@ -385,40 +486,40 @@ button:focus {
   width: 100%;
   box-sizing: border-box;
   padding: 10px 14px;
-  border: 1px solid #d8c8bb;
-  border-radius: 8px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
   font-family: inherit;
   font-size: 0.95rem;
-  background-color: #ffffff;
-  color: #2f2118;
+  background-color: var(--color-surface);
+  color: var(--color-text-main);
   transition: border-color 0.2s, box-shadow 0.2s;
 }
 
 .form-group input:focus,
 .form-group select:focus,
 .form-group textarea:focus {
-  border-color: #6f3b1f;
-  outline: 2px solid #6f3b1f;
+  border-color: var(--color-focus);
+  outline: 2px solid var(--color-focus);
   outline-offset: 1px;
 }
 
 .field-hint {
   font-size: 0.82rem;
-  color: #79665a;
+  color: var(--color-text-muted);
   margin-top: 2px;
 }
 
 .form-fieldset {
-  border: 1px solid #d8c8bb;
-  border-radius: 12px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
   padding: 16px 20px 20px;
   margin: 0;
-  background: #fdfbf7;
+  background: var(--color-surface-card);
 }
 
 .form-fieldset legend {
   font-weight: 700;
-  color: #4a2511;
+  color: var(--color-brand-dark);
   padding: 0 10px;
   font-size: 1rem;
 }
@@ -426,7 +527,8 @@ button:focus {
 .fieldset-desc {
   margin: 0 0 12px;
   font-size: 0.9rem;
-  color: #6f3b1f;
+  color: var(--color-brand-primary);
+  max-width: none;
 }
 
 .radio-group {
@@ -444,14 +546,14 @@ button:focus {
 .radio-item input[type="radio"] {
   width: 18px;
   height: 18px;
-  accent-color: #6f3b1f;
+  accent-color: var(--color-brand-primary);
   cursor: pointer;
   margin: 0;
 }
 
 .radio-item label {
   font-weight: 500;
-  color: #2f2118;
+  color: var(--color-text-main);
   cursor: pointer;
   font-size: 0.95rem;
 }
@@ -464,21 +566,22 @@ button:focus {
 .preview-box {
   margin-top: 28px;
   padding: 20px;
-  background: #fff9ec;
-  border: 2px solid #ffd166;
-  border-radius: 12px;
+  background: var(--color-surface-card);
+  border: 2px solid var(--color-accent);
+  border-radius: var(--radius-md);
 }
 
 .preview-box h3 {
   margin-top: 0;
   margin-bottom: 8px;
-  color: #6f3b1f;
+  color: var(--color-brand-primary);
 }
 
 .preview-box p {
   margin-top: 0;
   margin-bottom: 14px;
-  color: #4a2511;
+  color: var(--color-brand-dark);
+  max-width: none;
 }
 
 .preview-list {
@@ -490,12 +593,12 @@ button:focus {
 
 .preview-list dt {
   font-weight: 700;
-  color: #6f3b1f;
+  color: var(--color-brand-primary);
 }
 
 .preview-list dd {
   margin: 0;
-  color: #2f2118;
+  color: var(--color-text-main);
 }
 
 @media (max-width: 600px) {
