@@ -34,5 +34,20 @@ document.addEventListener("DOMContentLoaded", () => {
 
       previewBox.style.display = "block";
     });
+
+    // Reset formulir menyembunyikan kembali kotak preview dan mengosongkan data lama (E07)
+    contactForm.addEventListener("reset", () => {
+      const previewBox = document.querySelector("#previewBox");
+      if (previewBox) {
+        previewBox.style.display = "none";
+        document.querySelector("#previewNama").textContent = "-";
+        document.querySelector("#previewEmail").textContent = "-";
+        document.querySelector("#previewPaket").textContent = "-";
+        document.querySelector("#previewTopik").textContent = "-";
+        document.querySelector("#previewWhatsapp").textContent = "-";
+        document.querySelector("#previewWaktu").textContent = "-";
+        document.querySelector("#previewPesan").textContent = "-";
+      }
+    });
   }
 });

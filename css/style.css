@@ -103,10 +103,31 @@ h2 {
 }
 
 .hero {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-md);
   padding: 36px;
   color: var(--color-text-on-primary);
   background: var(--color-brand-primary);
   border-radius: var(--radius-lg);
+}
+
+.hero:has(.hero-action),
+.hero.hero-grid {
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--spacing-lg);
+  align-items: center;
+}
+
+.hero-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.hero-action {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
 }
 
 .eyebrow {
@@ -352,10 +373,14 @@ button:hover {
 .galeri-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 20px;
+  gap: var(--spacing-md);
 }
 
 .galeri-item {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   margin: 0;
   background: var(--color-surface-card);
   border: 1px solid var(--color-border);
@@ -373,22 +398,29 @@ button:hover {
   height: auto;
   aspect-ratio: 3 / 2;
   object-fit: cover;
-  border-radius: var(--radius-md);
   display: block;
 }
 
 .galeri-item figcaption {
   padding: 12px var(--spacing-md);
   display: flex;
-  flex-wrap: wrap;
-  align-items: center;
+  flex-direction: column;
   gap: var(--spacing-xs);
+  flex-grow: 1;
 }
 
 .galeri-item figcaption strong {
-  flex: 1 1 100%;
   font-size: 1rem;
   color: var(--color-brand-dark);
+}
+
+.galeri-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin-top: auto;
+  gap: var(--spacing-xs);
 }
 
 .galeri-harga {
@@ -396,13 +428,37 @@ button:hover {
   color: var(--color-brand-primary);
 }
 
+.btn-pesan {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px 12px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  text-decoration: none;
+  background: var(--color-accent);
+  color: var(--color-text-on-accent);
+  border-radius: var(--radius-pill);
+  transition: background-color 0.2s, box-shadow 0.2s;
+}
+
+.btn-pesan:hover {
+  background: var(--color-accent-hover);
+  color: var(--color-text-on-accent);
+}
+
 .galeri-label-baru {
+  position: absolute;
+  top: var(--spacing-sm);
+  right: var(--spacing-sm);
+  z-index: 1;
   background: var(--color-accent);
   color: var(--color-text-on-accent);
   font-size: 0.75rem;
   font-weight: 700;
   padding: 2px var(--spacing-sm);
   border-radius: var(--radius-pill);
+  box-shadow: 0 2px 6px var(--color-shadow);
 }
 
 .galeri-note {
@@ -559,7 +615,22 @@ button:hover {
 }
 
 .form-actions {
-  margin-top: 8px;
+  display: flex;
+  gap: var(--spacing-sm);
+  align-items: center;
+  flex-wrap: wrap;
+  margin-top: var(--spacing-md);
+}
+
+.btn-secondary {
+  background: transparent;
+  color: var(--color-brand-primary);
+  border: 1px solid var(--color-border);
+}
+
+.btn-secondary:hover {
+  background: var(--color-bg-page);
+  color: var(--color-brand-dark);
 }
 
 /* Kotak Preview Ringan */
