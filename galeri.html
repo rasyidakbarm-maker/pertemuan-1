@@ -77,7 +77,7 @@
           <!-- Produk 3: Kopi Susu -->
           <figure class="galeri-item">
             <img
-              src="asset/kopi-susu.png"
+              src="asset/kopi-susu.jpg"
               alt="Gelas plastik kopi susu dingin dengan es batu bertumpuk dan sedotan putih, gradasi warna coklat ke putih susu"
               class="galeri-img"
               width="600"
@@ -93,21 +93,12 @@
           </figure>
 
           <!-- Produk 4 (BARU): Kopi Tubruk Tradisional -->
-          <!--
-            Challenge srcset:
-            Idealnya disediakan dua ukuran gambar:
-              - kopi-tubruk-320.jpg  (~30 KB, lebar 320 px) untuk layar kecil
-              - kopi-tubruk-640.jpg  (~90 KB, lebar 640 px) untuk layar besar
-            Karena aset saat ini hanya ada satu file (pukaya.png ≈ 577 KB),
-            srcset di bawah menunjukkan cara penulisan yang benar menggunakan
-            satu file yang sama sebagai demonstrasi.
-          -->
           <figure class="galeri-item galeri-item--baru">
             <img
               src="asset/kopi-tubruk.jpg"
-              srcset="asset/kopi-tubruk.jpg 320w,
-                      asset/kopi-tubruk.jpg 640w"
-              sizes="(max-width: 600px) 320px, 640px"
+              srcset="asset/kopi-tubruk-320.jpg 320w,
+                      asset/kopi-tubruk-640.jpg 640w"
+              sizes="(max-width: 600px) calc(100vw - 72px), (max-width: 920px) 50vw, 300px"
               alt="Kopi hitam dituang ke cangkir putih di atas tatakan, dikelilingi biji kopi sangrai"
               class="galeri-img"
               width="600"

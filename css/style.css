@@ -1,41 +1,39 @@
 :root {
   /* ========================================================
-     TOKEN IDENTITAS UMKM KOPI KAMPUNG (P05)
+     TOKEN IDENTITAS UMKM KOPI KAMPUNG 
      ======================================================== */
   /* Token Warna Berbasis Fungsi (Functional Color Tokens) */
-  --color-bg-page: #f6f0e8;         /* Latar belakang halaman utama */
-  --color-surface: #ffffff;         /* Latar belakang kontainer box */
-  --color-surface-card: #fdfbf7;    /* Latar belakang kartu item/produk */
-  --color-brand-primary: #6f3b1f;   /* Warna utama identitas UMKM (kopi sangrai hangat) */
-  --color-brand-dark: #4a2511;      /* Warna aksen gelap untuk judul */
-  --color-accent: #ffd166;          /* Warna aksen interaktif/tombol promo (emas hangat) */
-  --color-accent-hover: #f0c355;    /* Warna hover tombol promo */
-  --color-text-main: #2f2118;       /* Warna teks utama berkontras tinggi */
-  --color-text-muted: #79665a;      /* Warna teks pendukung */
-  --color-text-on-accent: #2f2118;  /* Warna teks kontras di atas latar aksen emas */
-  --color-text-on-primary: #ffffff; /* Warna teks kontras di atas latar brand primary */
-  --color-border: #ebdccd;          /* Garis batas kartu/komponen */
-  --color-focus: #6f3b1f;           /* Warna indikator fokus standar */
-  --color-focus-on-dark: #ffd166;   /* Warna indikator fokus pada latar gelap */
-  --color-shadow: rgba(111, 59, 31, 0.08);       /* Bayangan kontainer box */
-  --color-shadow-focus: rgba(111, 59, 31, 0.2);  /* Bayangan aksen item galeri */
+  --color-bg-page: #f6f0e8;         
+  --color-surface: #ffffff;         
+  --color-surface-card: #fdfbf7;    
+  --color-brand-primary: #6f3b1f;   
+  --color-brand-dark: #4a2511;      
+  --color-accent: #ffd166;          
+  --color-accent-hover: #f0c355;   
+  --color-text-main: #2f2118;      
+  --color-text-muted: #79665a;     
+  --color-text-on-accent: #2f2118;
+  --color-text-on-primary: #ffffff; 
+  --color-border: #ebdccd;          
+  --color-focus: #6f3b1f;           
+  --color-focus-on-dark: #ffd166;   
+  --color-shadow: rgba(111, 59, 31, 0.08);       
+  --color-shadow-focus: rgba(111, 59, 31, 0.2);  
 
   /* Pasangan Token Radius & Spacing */
-  --radius-sm: 8px;                 /* Sudut tumpul kecil (input, badge) */
-  --radius-md: 16px;                /* Sudut tumpul sedang (kartu box, item) */
-  --radius-lg: 24px;                /* Sudut tumpul besar (hero banner) */
-  --radius-pill: 999px;             /* Radius bentuk kapsul/pil untuk tombol */
+  --radius-sm: 8px;                 
+  --radius-md: 16px;               
+  --radius-lg: 24px;               
+  --radius-pill: 999px;            
 
-  --spacing-xs: 4px;                /* Spacing berukuran ekstra kecil (pasangan spacing) */
-  --spacing-sm: 8px;                /* Spacing berukuran kecil */
-  --spacing-md: 16px;               /* Spacing berukuran sedang */
-  --spacing-lg: 24px;               /* Spacing berukuran besar (pasangan spacing) */
-
+  --spacing-xs: 4px;                
+  --spacing-sm: 8px;               
+  --spacing-md: 16px;              
+  --spacing-lg: 24px;               
   /* Token Tipografi & Aksesibilitas Baca */
-  --line-height-base: 1.6;          /* Jarak antarbaris teks isi */
-  --line-height-heading: 1.25;      /* Jarak antarbaris judul */
-  --measure-text: 65ch;             /* Batas panjang baris optimal untuk kenyamanan membaca */
-}
+  --line-height-base: 1.6;          
+  --line-height-heading: 1.25;      
+  --measure-text: 65ch;             
 
 /* ========================================================
    VARIASI TEMA: DARK ROAST (TEMA MALAM IDENTITAS UMKM)
@@ -43,23 +41,22 @@
    ======================================================== */
 [data-theme="dark"],
 .theme-dark {
-  /* Revisi Token Warna Berbasis Fungsi untuk Tema Dark Roast */
-  --color-bg-page: #19120d;         /* Latar belakang halaman malam bernuansa kopi hitam */
-  --color-surface: #261c15;         /* Latar permukaan kontainer box */
-  --color-surface-card: #30241b;    /* Latar permukaan kartu produk/item */
-  --color-brand-primary: #d48b54;   /* Warna brand primer terang agar kontras di latar gelap */
-  --color-brand-dark: #f0dfd1;      /* Warna teks judul/heading cerah agar jelas terbaca */
-  --color-accent: #f5b041;          /* Warna aksen interaktif/tombol promo (emas hangat) */
-  --color-accent-hover: #e09e30;    /* Warna hover tombol promo di tema malam */
-  --color-text-main: #f7ede4;       /* Teks utama gading terang (kontras tinggi) */
-  --color-text-muted: #bfa99b;      /* Teks pendukung krem-abu */
-  --color-text-on-accent: #19120d;  /* Teks kontras tinggi (9,85:1) di atas aksen emas #f5b041 */
-  --color-text-on-primary: #19120d; /* Teks kontras tinggi (6,72:1) di atas brand primary #d48b54 */
-  --color-border: #443327;          /* Garis batas kartu/komponen bernuansa cokelat hangat gelap */
-  --color-focus: #f5b041;           /* Warna indikator fokus standar (kontras tinggi di latar gelap) */
-  --color-focus-on-dark: #19120d;   /* Indikator fokus di hero banner (kontras 6,72:1 di atas #d48b54) */
-  --color-shadow: rgba(0, 0, 0, 0.45);            /* Bayangan kontainer box tema gelap */
-  --color-shadow-focus: rgba(245, 176, 65, 0.25); /* Bayangan aksen item tema gelap */
+  --color-bg-page: #19120d;         
+  --color-surface: #261c15;         
+  --color-surface-card: #30241b;    
+  --color-brand-primary: #d48b54;   
+  --color-brand-dark: #f0dfd1;     
+  --color-accent: #f5b041;          
+  --color-accent-hover: #e09e30;    
+  --color-text-main: #f7ede4;       
+  --color-text-muted: #bfa99b;      
+  --color-text-on-accent: #19120d;  
+  --color-text-on-primary: #19120d; 
+  --color-border: #443327;          
+  --color-focus: #f5b041;           
+  --color-focus-on-dark: #19120d;   
+  --color-shadow: rgba(0, 0, 0, 0.45);            
+  --color-shadow-focus: rgba(245, 176, 65, 0.25); 
 }
 
 *,
@@ -88,12 +85,12 @@ h3 {
 }
 
 h1 {
-  font-size: 2rem;
+  font-size: clamp(1.5rem, 4vw + 0.5rem, 2.25rem);
   margin-top: 0;
 }
 
 h2 {
-  font-size: 1.5rem;
+  font-size: clamp(1.25rem, 3vw + 0.25rem, 1.75rem);
 }
 
 .page {
@@ -106,7 +103,7 @@ h2 {
   display: grid;
   grid-template-columns: 1fr;
   gap: var(--spacing-md);
-  padding: 36px;
+  padding: clamp(var(--spacing-md), 5vw, 36px);
   color: var(--color-text-on-primary);
   background: var(--color-brand-primary);
   border-radius: var(--radius-lg);
@@ -114,7 +111,7 @@ h2 {
 
 .hero:has(.hero-action),
 .hero.hero-grid {
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
   gap: var(--spacing-lg);
   align-items: center;
 }
@@ -168,7 +165,7 @@ section {
 
 .box {
   background: var(--color-surface);
-  padding: var(--spacing-lg);
+  padding: clamp(var(--spacing-md), 4vw, var(--spacing-lg));
   border-radius: var(--radius-md);
   border: 1px solid var(--color-border);
   box-shadow: 0 4px 12px var(--color-shadow);
@@ -372,7 +369,7 @@ button:hover {
 /* Galeri Produk & Tabel Katalog */
 .galeri-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr));
   gap: var(--spacing-md);
 }
 
