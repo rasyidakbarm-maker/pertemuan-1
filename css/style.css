@@ -230,6 +230,85 @@ button:hover {
   gap: 16px;
 }
 
+/* Tombol Hamburger (Mobile Default) */
+.nav-toggle {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  width: 44px;
+  height: 44px;
+  background: transparent;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  padding: 8px;
+  transition: border-color 0.2s, background-color 0.2s;
+}
+
+.nav-toggle:hover {
+  background: var(--color-surface-card);
+  border-color: var(--color-brand-primary);
+}
+
+.hamburger-bar {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background-color: var(--color-brand-primary);
+  border-radius: 2px;
+  transition: transform 0.25s, opacity 0.25s;
+}
+
+/* Animasi Transformasi Hamburger ke Simbol '✕' */
+.nav-toggle[aria-expanded="true"] .hamburger-bar:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+.nav-toggle[aria-expanded="true"] .hamburger-bar:nth-child(2) {
+  opacity: 0;
+}
+.nav-toggle[aria-expanded="true"] .hamburger-bar:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/* Mobile Dropdown Panel */
+@media (max-width: 639px) {
+  .nav-container {
+    display: none;
+    width: 100%;
+    margin-top: var(--spacing-sm);
+  }
+
+  .nav-container.is-active {
+    display: block;
+  }
+
+  .nav-list {
+    flex-direction: column;
+    gap: 8px;
+    width: 100%;
+  }
+
+  .nav-list a {
+    display: block;
+    width: 100%;
+    text-align: center;
+    padding: 10px 16px;
+  }
+}
+
+/* Desktop Mode: Kembalikan ke Layout Asli */
+@media (min-width: 640px) {
+  .nav-toggle {
+    display: none;
+  }
+
+  .nav-container {
+    display: block !important;
+  }
+}
+
 .brand {
   font-size: 1.25rem;
   font-weight: 800;
@@ -502,6 +581,134 @@ button:hover {
 
 .baris-baru th {
   color: var(--color-brand-primary);
+}
+
+/* Styling Baris & Badge Produk Dinamis (P09) */
+.baris-unggulan {
+  background: var(--color-surface-card);
+}
+
+.badge {
+  display: inline-block;
+  padding: 2px 8px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  border-radius: var(--radius-pill);
+  margin-left: 6px;
+  vertical-align: middle;
+}
+
+.badge-unggulan {
+  background: var(--color-accent);
+  color: var(--color-text-on-accent);
+}
+
+.badge-tersedia {
+  background: rgba(46, 125, 50, 0.12);
+  color: #2e7d32;
+  border: 1px solid rgba(46, 125, 50, 0.3);
+}
+
+.badge-terbatas {
+  background: rgba(239, 108, 0, 0.12);
+  color: #ef6c00;
+  border: 1px solid rgba(239, 108, 0, 0.3);
+}
+
+.badge-habis {
+  background: rgba(198, 40, 40, 0.12);
+  color: #c62828;
+  border: 1px solid rgba(198, 40, 40, 0.3);
+}
+
+[data-theme="dark"] .badge-tersedia,
+.theme-dark .badge-tersedia {
+  background: rgba(129, 199, 132, 0.15);
+  color: #81c784;
+  border-color: rgba(129, 199, 132, 0.4);
+}
+
+[data-theme="dark"] .badge-terbatas,
+.theme-dark .badge-terbatas {
+  background: rgba(255, 183, 77, 0.15);
+  color: #ffb74d;
+  border-color: rgba(255, 183, 77, 0.4);
+}
+
+[data-theme="dark"] .badge-habis,
+.theme-dark .badge-habis {
+  background: rgba(229, 115, 115, 0.15);
+  color: #e57373;
+  border-color: rgba(229, 115, 115, 0.4);
+}
+
+/* ========================================================
+   E09: CSS KARTU PRODUK DINAMIS (#produk-dinamis)
+   ======================================================== */
+#produk-dinamis {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 200px), 1fr));
+  gap: var(--spacing-md);
+  margin-top: var(--spacing-md);
+}
+
+.product-card {
+  background: var(--color-surface-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  padding: var(--spacing-md);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.product-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px var(--color-shadow);
+}
+
+.product-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: var(--spacing-sm);
+  gap: var(--spacing-xs);
+}
+
+.product-card-title {
+  margin: 0;
+  font-size: 1.15rem;
+  color: var(--color-brand-dark);
+}
+
+.product-card-category {
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+  margin: 0 0 var(--spacing-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.product-card-desc {
+  font-size: 0.88rem;
+  color: var(--color-text-muted);
+  margin: 0 0 var(--spacing-sm);
+  line-height: 1.5;
+}
+
+.product-card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: auto;
+  gap: var(--spacing-xs);
+}
+
+.product-card-price {
+  font-weight: 700;
+  color: var(--color-brand-primary);
+  margin: 0;
 }
 
 .tabel-catatan {

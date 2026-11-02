@@ -6,12 +6,24 @@
     <meta name="description" content="Galeri produk visual Kopi Kampung - Menampilkan menu kopi americano, cold brew aren, kopi susu, dan kopi tubruk." />
     <title>Galeri Produk - Kopi Kampung</title>
     <link rel="stylesheet" href="css/style.css" />
+    <script src="js/app.js" defer></script>
   </head>
 
   <body>
     <header class="site-header">
       <a href="index.html" class="brand">Kopi Kampung</a>
-      <nav aria-label="Navigasi Utama">
+      <button
+        type="button"
+        class="nav-toggle"
+        aria-expanded="false"
+        aria-controls="nav-menu"
+        aria-label="Buka menu navigasi"
+      >
+        <span class="hamburger-bar"></span>
+        <span class="hamburger-bar"></span>
+        <span class="hamburger-bar"></span>
+      </button>
+      <nav id="nav-menu" class="nav-container" aria-label="Navigasi Utama">
         <ul class="nav-list">
           <li><a href="index.html">Beranda</a></li>
           <li><a href="tentang.html">Tentang Kami</a></li>

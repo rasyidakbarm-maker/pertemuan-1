@@ -6,12 +6,24 @@
     <meta name="description" content="Katalog menu dan harga lengkap Kopi Kampung Batang - Tabel daftar harga kopi hitam, cold brew, dan kopi susu." />
     <title>Katalog Produk - Kopi Kampung</title>
     <link rel="stylesheet" href="css/style.css" />
+    <script src="js/app.js" defer></script>
   </head>
 
   <body>
     <header class="site-header">
       <a href="index.html" class="brand">Kopi Kampung</a>
-      <nav aria-label="Navigasi Utama">
+      <button
+        type="button"
+        class="nav-toggle"
+        aria-expanded="false"
+        aria-controls="nav-menu"
+        aria-label="Buka menu navigasi"
+      >
+        <span class="hamburger-bar"></span>
+        <span class="hamburger-bar"></span>
+        <span class="hamburger-bar"></span>
+      </button>
+      <nav id="nav-menu" class="nav-container" aria-label="Navigasi Utama">
         <ul class="nav-list">
           <li><a href="index.html">Beranda</a></li>
           <li><a href="tentang.html">Tentang Kami</a></li>
@@ -47,7 +59,7 @@
               </tr>
             </thead>
 
-            <tbody>
+            <tbody id="tabel-produk-body">
               <tr>
                 <th scope="row">Kopi Americano</th>
                 <td>Kopi Hitam</td>
@@ -78,7 +90,7 @@
                 <td>Kopi Hitam</td>
                 <td>Kopi bubuk diseduh langsung dengan air mendidih, cara tradisional khas Jawa Tengah</td>
                 <td>Rp8.000</td>
-                <td>Tersedia</td>
+                <td><span class="badge badge-habis">Habis</span></td>
               </tr>
             </tbody>
           </table>
