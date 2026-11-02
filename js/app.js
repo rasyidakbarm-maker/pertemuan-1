@@ -1,14 +1,3 @@
-"use strict";
-
-/**
- * ========================================================
- * PRAKTIKUM P09: FITUR DATA PRODUK UMKM KOPI KAMPUNG
- * ========================================================
- * Memodelkan data produk sebagai Array of Objects dan merendernya
- * secara dinamis ke dalam DOM dengan manipulasi berbasis kondisi.
- */
-
-// 1. Data Model Produk UMKM Kopi Kampung (Minimal 4 Produk)
 const daftarProduk = [
   {
     id: 1,
@@ -48,26 +37,18 @@ const daftarProduk = [
   }
 ];
 
-// 2. Logging ke Console DevTools (Ketentuan 10)
-console.group("=== Katalog Data Produk UMKM (P09) ===");
+
+console.group("=== Katalog Data Produk UMKM ===");
 console.info("Memuat data produk dalam bentuk tabel terstruktur:");
 console.table(daftarProduk);
 console.groupEnd();
 
-/**
- * Helper: Format angka menjadi mata uang Rupiah
- * Menggunakan operator dan template literal
- */
 const formatRupiah = (angka) => `Rp${angka.toLocaleString("id-ID")}`;
 
-/**
- * 3. Fungsi Render Data ke DOM
- * Mencegah runtime error pada halaman lain via Guard Clause (Ketentuan 9)
- */
 function renderKatalogProduk() {
   const tbody = document.querySelector("#tabel-produk-body");
 
-  // Guard Clause: Halaman tanpa target DOM tidak akan mengalami error
+
   if (!tbody) {
     console.info("Halaman ini tidak memuat kontainer #tabel-produk-body. Rendering dilewati dengan aman.");
     return;
@@ -75,11 +56,11 @@ function renderKatalogProduk() {
 
   let barisTabelHTML = "";
 
-  // Iterasi Array of Objects
+  
   for (let i = 0; i < daftarProduk.length; i++) {
     const produk = daftarProduk[i];
 
-    // Keputusan Kondisional 1: Status Ketersediaan berdasarkan Stok
+    
     let statusBadgeHTML = "";
     if (produk.stok === 0) {
       statusBadgeHTML = `<span class="badge badge-habis">Habis</span>`;
@@ -89,12 +70,10 @@ function renderKatalogProduk() {
       statusBadgeHTML = `<span class="badge badge-tersedia">Tersedia (${produk.stok})</span>`;
     }
 
-    // Keputusan Kondisional 2: Penanda Produk Unggulan
     const labelUnggulanHTML = produk.isUnggulan
       ? `<span class="badge badge-unggulan">★ Unggulan</span>`
       : "";
 
-    // Penyusunan output baris tabel semantik via Template Literal
     barisTabelHTML += `
       <tr class="${produk.isUnggulan ? 'baris-unggulan' : ''}">
         <th scope="row">
@@ -109,19 +88,13 @@ function renderKatalogProduk() {
     `;
   }
 
-  // Masukkan seluruh baris ke elemen tbody
   tbody.innerHTML = barisTabelHTML;
   console.log(`%c[Sukses] Berhasil merender ${daftarProduk.length} produk ke dalam DOM.`, "color: #2e7d32; font-weight: bold;");
 }
 
-/**
- * 4. Fungsi Render Kartu Produk Dinamis (Rubrik E04 Target #produk-dinamis)
- * Merender daftar produk dalam format kartu modern ke elemen #produk-dinamis
- */
 function renderKartuProdukDinamis() {
   const container = document.querySelector("#produk-dinamis");
-
-  // Guard Clause: Mencegah error jika dijalankan di halaman tanpa #produk-dinamis
+  
   if (!container) return;
 
   let kartuHTML = "";
@@ -129,7 +102,6 @@ function renderKartuProdukDinamis() {
   for (let i = 0; i < daftarProduk.length; i++) {
     const produk = daftarProduk[i];
 
-    // Status stok badge
     let statusBadgeHTML = "";
     if (produk.stok === 0) {
       statusBadgeHTML = `<span class="badge badge-habis">Habis</span>`;
@@ -139,7 +111,6 @@ function renderKartuProdukDinamis() {
       statusBadgeHTML = `<span class="badge badge-tersedia">Tersedia (${produk.stok})</span>`;
     }
 
-    // Label unggulan
     const labelUnggulanHTML = produk.isUnggulan
       ? `<span class="badge badge-unggulan">★ Unggulan</span>`
       : "";
@@ -166,14 +137,11 @@ function renderKartuProdukDinamis() {
   console.log(`%c[E04] Berhasil merender ${daftarProduk.length} kartu produk dinamis ke #produk-dinamis.`, "color: #2e7d32; font-weight: bold;");
 }
 
-// Inisialisasi Eksekusi Rendering
+
 renderKatalogProduk();
 renderKartuProdukDinamis();
 
-/**
- * 5. Navigasi Responsif Hamburger Menu (Mobile Friendly)
- * Menangani interaksi klik tombol hamburger, pembaruan ARIA, dan aksesibilitas keyboard (Escape).
- */
+
 function initNavToggle() {
   const toggleBtn = document.querySelector(".nav-toggle");
   const navMenu = document.querySelector("#nav-menu");
@@ -187,7 +155,7 @@ function initNavToggle() {
     navMenu.classList.toggle("is-active", !isExpanded);
   });
 
-  // Aksesibilitas Keyboard: Tutup menu saat tombol Escape ditekan
+  
   document.addEventListener("keydown", (e) => {
     if (e.key === "Escape" && toggleBtn.getAttribute("aria-expanded") === "true") {
       toggleBtn.setAttribute("aria-expanded", "false");
