@@ -1,4 +1,4 @@
-// Logic Formulir Kontak & Preview Ringan (P04)
+// Logic Formulir Kontak & Preview Ringan 
 document.addEventListener("DOMContentLoaded", () => {
   const contactForm = document.querySelector("#contactForm");
 

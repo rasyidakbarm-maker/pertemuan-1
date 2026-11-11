@@ -42,6 +42,29 @@
         <p>Daftar lengkap menu dan harga produk Kopi Kampung yang tersedia di kedai kami.</p>
       </section>
 
+      <!-- Section Katalog Produk Interaktif -->
+      <section class="box" aria-labelledby="katalog-interaktif-title">
+        <h2 id="katalog-interaktif-title">Katalog Produk Interaktif</h2>
+        <p>Gunakan filter kategori di bawah ini untuk menampilkan menu pilihan secara dinamis:</p>
+
+        <!-- Tombol Filter Kategori -->
+        <div class="filter-container" role="group" aria-label="Filter Kategori Produk">
+          <button type="button" class="btn-filter is-active" data-filter="semua">Semua</button>
+          <button type="button" class="btn-filter" data-filter="Kopi Hitam">Kopi Hitam</button>
+          <button type="button" class="btn-filter" data-filter="Cold Brew">Cold Brew</button>
+          <button type="button" class="btn-filter" data-filter="Kopi Susu">Kopi Susu</button>
+          <button type="button" class="btn-filter" data-filter="Makanan">Makanan</button>
+        </div>
+
+        
+        <p id="status-katalog" class="status-katalog" aria-live="polite">
+          Menampilkan semua produk (4 produk)
+        </p>
+
+        
+        <div id="produk-grid" class="products-grid"></div>
+      </section>
+
       <section class="box" aria-labelledby="katalog-title">
         <h2 id="katalog-title">Daftar Menu &amp; Harga</h2>
 

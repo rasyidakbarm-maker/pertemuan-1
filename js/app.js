@@ -1,3 +1,4 @@
+// 1. Data Model UMKM Kopi Kampung (Array of Objects)
 const daftarProduk = [
   {
     id: 1,
@@ -63,31 +64,171 @@ function statusStok(stok) {
   }
 }
 
-function buatKartuProduk(produk) {
-  const status = statusStok(produk.stok);
-  const labelUnggulanHTML = produk.isUnggulan
-    ? `<span class="badge badge-unggulan">★ Unggulan</span>`
-    : "";
+// Variabel pelacak jumlah kartu yang dihapus dalam sesi filter aktif
+let jumlahKartuDihapus = 0;
 
-  return `
-    <article class="product-card" data-id="${produk.id}">
-      <div class="product-card-header">
-        <div>
-          <span class="product-card-category">${produk.kategori}</span>
-          <h3 class="product-card-title">${produk.nama}</h3>
-        </div>
-        ${labelUnggulanHTML}
-      </div>
-      <p class="product-card-desc">${produk.deskripsi}</p>
-      <div class="product-card-footer">
-        <p class="product-card-price">${formatRupiah(produk.harga)}</p>
-        <span class="badge ${status.badgeClass}">${status.label}</span>
-      </div>
-    </article>
-  `;
+function buatElemenProduk(produk) {
+  // Buat elemen pembungkus kartu (<article class="product-card">)
+  const card = document.createElement("article");
+  card.classList.add("product-card");
+  card.dataset.id = String(produk.id);
+
+  // Header kartu
+  const header = document.createElement("div");
+  header.classList.add("product-card-header");
+
+  const titleGroup = document.createElement("div");
+
+  const cat = document.createElement("span");
+  cat.classList.add("product-card-category");
+  cat.textContent = produk.kategori;
+
+  const title = document.createElement("h3");
+  title.classList.add("product-card-title");
+  title.textContent = produk.nama;
+
+  titleGroup.append(cat, title);
+  header.append(titleGroup);
+
+  // Label unggulan
+  if (produk.isUnggulan) {
+    const badgeUnggulan = document.createElement("span");
+    badgeUnggulan.classList.add("badge", "badge-unggulan");
+    badgeUnggulan.textContent = "★ Unggulan";
+    header.append(badgeUnggulan);
+  }
+
+  // Deskripsi produk
+  const desc = document.createElement("p");
+  desc.classList.add("product-card-desc");
+  desc.textContent = produk.deskripsi;
+
+  // Footer kartu (harga & status stok)
+  const footer = document.createElement("div");
+  footer.classList.add("product-card-footer");
+
+  const price = document.createElement("p");
+  price.classList.add("product-card-price");
+  price.textContent = formatRupiah(produk.harga);
+
+  const status = statusStok(produk.stok);
+  const badgeStok = document.createElement("span");
+  badgeStok.classList.add("badge", status.badgeClass);
+  badgeStok.textContent = status.label;
+
+  footer.append(price, badgeStok);
+
+  // Bagian aksi: Latihan manipulasi DOM uji card.remove()
+  const actions = document.createElement("div");
+  actions.classList.add("product-card-actions");
+
+  const btnHapus = document.createElement("button");
+  btnHapus.type = "button";
+  btnHapus.classList.add("btn-hapus-kartu");
+  btnHapus.textContent = "Hapus Kartu (Latihan DOM)";
+  btnHapus.setAttribute("aria-label", `Hapus kartu ${produk.nama} dari tampilan`);
+
+  // Event listener untuk menguji method remove()
+  btnHapus.addEventListener("click", () => {
+    card.remove(); // Menghapus elemen kartu dari pohon DOM
+    jumlahKartuDihapus++;
+    console.log(`[DOM remove()] Kartu "${produk.nama}" berhasil dihapus dari tree DOM.`);
+
+    // Perbarui teks status setelah penghapusan elemen
+    const sisaKartu = document.querySelectorAll("#produk-grid .product-card");
+    const statusEl = document.querySelector("#status-katalog");
+    if (statusEl) {
+      statusEl.textContent = `Menampilkan ${sisaKartu.length} produk di layar (${jumlahKartuDihapus} kartu dihapus via latihan DOM remove).`;
+    }
+  });
+
+  actions.append(btnHapus);
+
+  // Susun elemen kartu menggunakan append()
+  card.append(header, desc, footer, actions);
+
+  return card;
 }
 
-// Helper baris tabel untuk halaman produk.html
+//untuk elemen pesan kategori kosong
+function buatEmptyState(kategoriAktif) {
+  const emptyBox = document.createElement("div");
+  emptyBox.classList.add("empty-state");
+
+  const emptyTitle = document.createElement("p");
+  emptyTitle.classList.add("empty-title");
+  emptyTitle.textContent = `Tidak ada produk untuk kategori "${kategoriAktif}".`;
+
+  const emptyDesc = document.createElement("p");
+  emptyDesc.classList.add("empty-desc");
+  emptyDesc.textContent = "Silakan pilih kategori lain atau klik 'Semua' untuk melihat seluruh menu.";
+
+  emptyBox.append(emptyTitle, emptyDesc);
+  return emptyBox;
+}
+
+//renderProduk(kategoriAktif) dengan querySelector & replaceChildren
+function renderProduk(kategoriAktif = "semua") {
+  // Reset penghitung kartu yang dihapus saat kategori dirender ulang
+  jumlahKartuDihapus = 0;
+
+  
+  const grid = document.querySelector("#produk-grid");
+  const statusEl = document.querySelector("#status-katalog");
+
+  // Guard clause mencegah error jika dijalankan di halaman tanpa #produk-grid
+  if (!grid) return;
+
+  // Filter produk berdasarkan kategori yang dipilih
+  const produkTersaring = kategoriAktif === "semua"
+    ? daftarProduk
+    : daftarProduk.filter((produk) => produk.kategori.toLowerCase() === kategoriAktif.toLowerCase());
+
+  // Perbarui area status produk dengan teks informatif
+  if (statusEl) {
+    if (kategoriAktif === "semua") {
+      statusEl.textContent = `Menampilkan semua produk (${produkTersaring.length} produk)`;
+    } else {
+      statusEl.textContent = `Kategori "${kategoriAktif}": ${produkTersaring.length} produk ditemukan`;
+    }
+  }
+
+  // Empty State: Jika kategori tidak memiliki produk
+  if (produkTersaring.length === 0) {
+    const emptyBox = buatEmptyState(kategoriAktif);
+    // replaceChildren membersihkan elemen lama dan menampilkan pesan kosong
+    grid.replaceChildren(emptyBox);
+    return;
+  }
+
+  // Buat array elemen kartu dengan createElement via buatElemenProduk
+  const elemenKartu = produkTersaring.map((produk) => buatElemenProduk(produk));
+
+  // replaceChildren menggambar ulang kartu tanpa risiko dobel
+  grid.replaceChildren(...elemenKartu);
+}
+
+//Inisialisasi Filter Kategori (querySelectorAll, addEventListener, event.currentTarget.dataset.filter)
+function initFilterKategori() {
+  // Gunakan querySelectorAll untuk daftar tombol filter
+  const filterButtons = document.querySelectorAll(".btn-filter");
+  if (filterButtons.length === 0) return;
+
+  filterButtons.forEach((btn) => {
+    btn.addEventListener("click", (event) => {
+      // Ambil nilai kategori secara aman dari data-filter
+      const kategori = event.currentTarget.dataset.filter;
+
+      // Kelola kelas tombol aktif menggunakan classList
+      filterButtons.forEach((b) => b.classList.remove("is-active"));
+      event.currentTarget.classList.add("is-active");
+
+      // Gambar ulang produk sesuai kategori
+      renderProduk(kategori);
+    });
+  });
+}
+
 function buatBarisTabel(produk) {
   const status = statusStok(produk.stok);
   const labelUnggulanHTML = produk.isUnggulan
@@ -108,65 +249,25 @@ function buatBarisTabel(produk) {
   `;
 }
 
-// 5. Operasi Array & Nilai Antara (filter, find, forEach, console.table/log)
-console.group("=== [P10] Katalog Produk UMKM Modular ===");
-
-// Inspeksi seluruh data produk
-console.table(daftarProduk);
-
-// (a) filter: Mengambil hanya produk yang tersedia (stok > 0)
-const produkTersedia = daftarProduk.filter((produk) => produk.stok > 0);
-console.log("1. Hasil filter (Produk Tersedia stok > 0):", produkTersedia);
-
-// (b) find: Menentukan satu produk rekomendasi unggulan yang siap dipesan
-const produkRekomendasi = daftarProduk.find(
-  (produk) => produk.isUnggulan && produk.stok > 0
-);
-console.log("2. Hasil find (Produk Rekomendasi Utama):", produkRekomendasi);
-
-
-console.groupCollapsed("3. Audit Inventaris Stok (forEach):");
-daftarProduk.forEach((p, idx) => {
-  const status = statusStok(p.stok);
-  console.log(`[Item #${idx + 1}] ${p.nama} | Status: ${status.label} | Harga: ${formatRupiah(p.harga)}`);
-});
-console.groupEnd();
-
-console.groupEnd();
-
-// 6. Rendering DOM dengan map & Guard Clause Bebas Error
-
-// (a) Render Kartu Produk di Beranda (index.html target #produk-dinamis)
-function renderKartuProdukDinamis() {
-  const container = document.querySelector("#produk-dinamis");
-  if (!container) return; // Guard clause mencegah error pada halaman non-beranda
-
-  const kartuMarkup = daftarProduk
-    .filter((produk) => produk.isUnggulan)
-    .map(buatKartuProduk)
-    .join("");
-  container.innerHTML = kartuMarkup;
-}
-
-// (b) Render Baris Tabel di Katalog (produk.html target #tabel-produk-body)
 function renderKatalogProduk() {
   const tbody = document.querySelector("#tabel-produk-body");
-  if (!tbody) return; // Guard clause mencegah error pada halaman non-katalog
+  if (!tbody) return;
 
   const tabelMarkup = daftarProduk.map(buatBarisTabel).join("");
   tbody.innerHTML = tabelMarkup;
 }
 
-// Fungsi utama renderProduk
-function renderProduk() {
-  renderKartuProdukDinamis();
-  renderKatalogProduk();
+function renderKartuProdukDinamis() {
+  const container = document.querySelector("#produk-dinamis");
+  if (!container) return;
+
+  // Filter hanya produk unggulan untuk beranda
+  const produkUnggulan = daftarProduk.filter((produk) => produk.isUnggulan);
+  const kartuElemen = produkUnggulan.map((produk) => buatElemenProduk(produk));
+  container.replaceChildren(...kartuElemen);
 }
 
-// Eksekusi render
-renderProduk();
-
-// 7. Navigasi Responsif Hamburger Menu 
+//Navigasi Responsif Hamburger Menu 
 function initNavToggle() {
   const toggleBtn = document.querySelector(".nav-toggle");
   const navMenu = document.querySelector("#nav-menu");
@@ -190,4 +291,9 @@ function initNavToggle() {
   });
 }
 
+// inisialisasi
+renderProduk("semua");
+initFilterKategori();
+renderKatalogProduk();
+renderKartuProdukDinamis();
 initNavToggle();
