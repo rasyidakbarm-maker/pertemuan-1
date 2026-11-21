@@ -7,6 +7,7 @@
     <title>Kontak Kami - Kopi Kampung</title>
     <link rel="stylesheet" href="css/style.css" />
     <script src="js/form.js" defer></script>
+    <script src="js/newsletter.js" defer></script>
     <script src="js/app.js" defer></script>
   </head>
 
@@ -48,47 +49,62 @@
         <h2 id="form-title">Formulir Kontak &amp; Preferensi</h2>
         <p>Lengkapi informasi berikut agar kami dapat melayani Anda dengan tepat.</p>
 
-        <form id="contactForm" class="contact-form">
+        <!-- Container Status Sukses / Error untuk Aksesibilitas Form
+        <div id="formStatus" class="form-status" role="status" aria-live="polite" tabindex="-1"></div>
+
+        <form id="contactForm" class="contact-form" novalidate>
           <!-- Field 1: Nama Lengkap -->
           <div class="form-group">
-            <label for="nama">Nama Lengkap</label>
+            <label for="nama">Nama Lengkap <span aria-hidden="true">*</span></label>
             <input
               type="text"
               id="nama"
               name="nama"
               placeholder="Masukkan nama lengkap Anda"
               minlength="3"
+              maxlength="50"
+              autocomplete="name"
               required
+              aria-required="true"
+              aria-describedby="nama-error nama-hint"
             />
+            <small id="nama-hint" class="field-hint">Minimal 3 karakter.</small>
+            <span id="nama-error" class="error-message" role="alert"></span>
           </div>
 
           <!-- Field 2: Alamat Email -->
           <div class="form-group">
-            <label for="email">Alamat Email</label>
+            <label for="email">Alamat Email <span aria-hidden="true">*</span></label>
             <input
               type="email"
               id="email"
               name="email"
               placeholder="nama@email.com"
+              autocomplete="email"
               required
+              aria-required="true"
+              aria-describedby="email-error email-hint"
             />
+            <small id="email-hint" class="field-hint">Format email yang valid (contoh: nama@email.com).</small>
+            <span id="email-error" class="error-message" role="alert"></span>
           </div>
 
-          <!-- Field 3: Paket Diminati (Select Dropdown - Praktikum Terbimbing) -->
+          <!-- Field 3: Paket Diminati (Select Dropdown) -->
           <div class="form-group">
-            <label for="paket">Paket Diminati</label>
-            <select id="paket" name="paket" required>
+            <label for="paket">Paket Diminati <span aria-hidden="true">*</span></label>
+            <select id="paket" name="paket" required aria-required="true" aria-describedby="paket-error">
               <option value="" disabled selected>-- Pilih salah satu paket --</option>
               <option value="Paket Biji Kopi Sangrai">Paket Biji Kopi Sangrai (250g / 500g)</option>
               <option value="Paket Kopi Siap Minum">Paket Kopi Siap Minum (Botol 1 Liter)</option>
               <option value="Paket Kemitraan UMKM">Paket Kemitraan Reseller / UMKM</option>
               <option value="Paket Konsultasi Barista">Paket Konsultasi / Pelatihan Seduh</option>
             </select>
+            <span id="paket-error" class="error-message" role="alert"></span>
           </div>
 
-          <!-- Field 4: Topik Pertanyaan (Radio Group - Praktikum Terbimbing) -->
-          <fieldset class="form-fieldset">
-            <legend>Topik Pertanyaan</legend>
+          <!-- Field 4: Topik Pertanyaan (Radio Group) -->
+          <fieldset class="form-fieldset" id="fieldsetTopik" aria-required="true" aria-describedby="topik-error">
+            <legend>Topik Pertanyaan <span aria-hidden="true">*</span></legend>
             <p class="fieldset-desc">Pilih kategori pertanyaan yang ingin Anda sampaikan:</p>
 
             <div class="radio-group">
@@ -125,26 +141,30 @@
                 <label for="topikEvent">Pemesanan Acara / Catering</label>
               </div>
             </div>
+            <span id="topik-error" class="error-message" role="alert" aria-live="polite"></span>
           </fieldset>
 
-          <!-- Field 5: Nomor WhatsApp (Input tel - Tugas Mandiri) -->
+          <!-- Field 5: Nomor WhatsApp -->
           <div class="form-group">
-            <label for="whatsapp">Nomor WhatsApp</label>
+            <label for="whatsapp">Nomor WhatsApp <span aria-hidden="true">*</span></label>
             <input
               type="tel"
               id="whatsapp"
               name="whatsapp"
               placeholder="Contoh: 081234567890"
-              pattern="[0-9]{10,15}"
-              title="Nomor WhatsApp harus berupa 10 hingga 15 digit angka (contoh: 081234567890)"
+              pattern="^08[0-9]{8,13}$"
+              autocomplete="tel"
               required
+              aria-required="true"
+              aria-describedby="whatsapp-error whatsapp-hint"
             />
-            <small class="field-hint">Gunakan angka saja, panjang 10-15 digit.</small>
+            <small id="whatsapp-hint" class="field-hint">Format Indonesia diawali 08 (10–15 digit, contoh: 081234567890).</small>
+            <span id="whatsapp-error" class="error-message" role="alert" aria-live="polite"></span>
           </div>
 
-          <!-- Field 6: Preferensi Waktu Kontak (Fieldset & Legend - Tugas Mandiri) -->
-          <fieldset class="form-fieldset">
-            <legend>Preferensi Waktu Kontak</legend>
+          <!-- Field 6: Preferensi Waktu Kontak (Radio Group) -->
+          <fieldset class="form-fieldset" id="fieldsetWaktu" aria-required="true" aria-describedby="waktuKontak-error">
+            <legend>Preferensi Waktu Kontak <span aria-hidden="true">*</span></legend>
             <p class="fieldset-desc">Pilih waktu terbaik bagi kami untuk menghubungi WhatsApp Anda:</p>
 
             <div class="radio-group">
@@ -181,23 +201,37 @@
                 <label for="waktuSore">Sore / Malam (15.00 - 21.00 WIB)</label>
               </div>
             </div>
+            <span id="waktuKontak-error" class="error-message" role="alert"></span>
           </fieldset>
 
           <!-- Field 7: Pesan atau Keterangan -->
           <div class="form-group">
-            <label for="pesan">Pesan atau Keterangan</label>
+            <label for="pesan">Pesan atau Keterangan <span aria-hidden="true">*</span></label>
             <textarea
               id="pesan"
               name="pesan"
               rows="4"
               placeholder="Tuliskan pesan atau pertanyaan Anda secara rinci..."
               minlength="10"
+              maxlength="500"
               required
+              aria-required="true"
+              aria-describedby="pesan-error pesan-hint"
             ></textarea>
-            <small class="field-hint">Minimal 10 karakter.</small>
+            <small id="pesan-hint" class="field-hint">Minimal 10 karakter, maksimal 500 karakter.</small>
+            <span id="pesan-error" class="error-message" role="alert"></span>
           </div>
 
-          <!-- Tombol Aksi Formulir (Flexbox) -->
+          <!-- Field 8: Persetujuan (Checkbox Required) -->
+          <div class="form-group checkbox-group">
+            <label class="checkbox-label" for="setuju">
+              <input type="checkbox" id="setuju" name="setuju" required aria-required="true" aria-describedby="setuju-error" />
+              Saya setuju data saya dipakai untuk menghubungi saya <span aria-hidden="true">*</span>
+            </label>
+            <span id="setuju-error" class="error-message" role="alert"></span>
+          </div>
+
+          <!-- Tombol Aksi Formulir -->
           <div class="form-actions">
             <button type="submit" id="submitBtn">Kirim Pesan</button>
             <button type="reset" id="resetBtn" class="btn-secondary">Reset Formulir</button>
@@ -230,6 +264,58 @@
             <dt>Pesan:</dt>
             <dd id="previewPesan">-</dd>
           </dl>
+        </div>
+      </section>
+
+      <!-- Section P12: Preferensi Pengunjung & Newsletter Ringan (localStorage) -->
+      <section class="box preference-panel" aria-labelledby="newsletter-title">
+        <h2 id="newsletter-title">Preferensi &amp; Langganan Info Kopi</h2>
+        <p>Atur preferensi menu kopi favorit dan langganan kabar terbaru UMKM Kopi Kampung:</p>
+
+        <form id="newsletterForm" class="newsletter-form" novalidate>
+          <div id="newsletterStatus" class="form-status" role="status" aria-live="polite" tabindex="-1"></div>
+
+          <div class="form-group">
+            <label for="newsletterEmail">Alamat Email Langganan <span aria-hidden="true">*</span></label>
+            <input
+              type="email"
+              id="newsletterEmail"
+              name="newsletterEmail"
+              placeholder="nama@email.com"
+              required
+              aria-required="true"
+              aria-describedby="newsletterEmail-error"
+            />
+            <span id="newsletterEmail-error" class="error-message" role="alert"></span>
+          </div>
+
+          <div class="form-group">
+            <label for="preferensiKategori">Kategori Minat Menu</label>
+            <select id="preferensiKategori" name="preferensiKategori">
+              <option value="Semua Menu">Semua Menu &amp; Promo</option>
+              <option value="Kopi Hitam">Kopi Hitam Tradisional</option>
+              <option value="Cold Brew">Cold Brew Aren</option>
+              <option value="Kopi Susu">Kopi Susu Segar</option>
+              <option value="Biji Kopi">Biji Kopi Sangrai (Beans)</option>
+            </select>
+          </div>
+
+          <div class="form-group checkbox-group">
+            <label class="checkbox-label" for="langgananPromo">
+              <input type="checkbox" id="langgananPromo" name="langgananPromo" checked />
+              Terima notifikasi diskon dan info seduh kopi bulanan
+            </label>
+          </div>
+
+          <div class="form-actions">
+            <button type="submit" id="simpanPreferensiBtn">Simpan Preferensi</button>
+            <button type="button" id="hapusPreferensiBtn" class="btn-secondary">Hapus Preferensi</button>
+          </div>
+        </form>
+
+        <div id="savedPreferenceDisplay" class="saved-preference-box" aria-live="polite">
+          <h3>Preferensi Tersimpan Anda:</h3>
+          <p id="savedPreferenceContent" class="saved-preference-content">Belum ada preferensi yang tersimpan di peramban ini.</p>
         </div>
       </section>
 
