@@ -1,0 +1,42 @@
+[
+  {
+    "id": 1,
+    "nama": "Kopi Americano",
+    "kategori": "Kopi Hitam",
+    "harga": 10000,
+    "stok": 12,
+    "isUnggulan": true,
+    "deskripsi": "Espresso pekat diseduh air panas, cita rasa kopi murni tanpa susu.",
+    "gambar": "asset/americano.jpg"
+  },
+  {
+    "id": 2,
+    "nama": "Cold Brew Aren",
+    "kategori": "Cold Brew",
+    "harga": 25000,
+    "stok": 4,
+    "isUnggulan": true,
+    "deskripsi": "Kopi seduh dingin 12 jam dipadu gula aren pilihan, segar dan manis alami.",
+    "gambar": "asset/cold-brew-aren.jpg"
+  },
+  {
+    "id": 3,
+    "nama": "Kopi Susu",
+    "kategori": "Kopi Susu",
+    "harga": 15000,
+    "stok": 9,
+    "isUnggulan": false,
+    "deskripsi": "Espresso lembut berpadu susu segar, creamy dengan sentuhan manis pas.",
+    "gambar": "asset/kopi-susu.jpg"
+  },
+  {
+    "id": 4,
+    "nama": "Kopi Tubruk Tradisional",
+    "kategori": "Kopi Hitam",
+    "harga": 8000,
+    "stok": 0,
+    "isUnggulan": false,
+    "deskripsi": "Kopi giling kasar diseduh mendidih langsung, aroma pekat khas pedesaan Batang.",
+    "gambar": "asset/kopi-tubruk.jpg"
+  }
+]

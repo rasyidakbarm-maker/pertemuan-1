@@ -6,7 +6,7 @@
     <meta name="description" content="Katalog menu dan harga lengkap Kopi Kampung Batang - Tabel daftar harga kopi hitam, cold brew, dan kopi susu." />
     <title>Katalog Produk - Kopi Kampung</title>
     <link rel="stylesheet" href="css/style.css" />
-    <script src="js/app.js" defer></script>
+    <script type="module" src="js/catalog-api.js"></script>
   </head>
 
   <body>
@@ -47,6 +47,26 @@
         <h2 id="katalog-interaktif-title">Katalog Produk Interaktif</h2>
         <p>Gunakan filter kategori di bawah ini untuk menampilkan menu pilihan secara dinamis:</p>
 
+        <!-- Area Ringkasan Statistik Produk (E04) -->
+        <div id="ringkasan-katalog" class="ringkasan-katalog" aria-live="polite">
+          <div class="ringkasan-item">
+            <span class="ringkasan-label">Total Menu:</span>
+            <strong id="ringkasan-total">-</strong>
+          </div>
+          <div class="ringkasan-item">
+            <span class="ringkasan-label">Menu Unggulan:</span>
+            <strong id="ringkasan-unggulan">-</strong>
+          </div>
+          <div class="ringkasan-item">
+            <span class="ringkasan-label">Tersedia:</span>
+            <strong id="ringkasan-tersedia">-</strong>
+          </div>
+          <div class="ringkasan-item">
+            <span class="ringkasan-label">Habis:</span>
+            <strong id="ringkasan-habis">-</strong>
+          </div>
+        </div>
+
         <!-- Tombol Filter Kategori -->
         <div class="filter-container" role="group" aria-label="Filter Kategori Produk">
           <button type="button" class="btn-filter is-active" data-filter="semua">Semua</button>
@@ -63,6 +83,13 @@
 
         
         <div id="produk-grid" class="products-grid"></div>
+      </section>
+
+      <!-- Section Produk Unggulan Rekomendasi (E04) -->
+      <section class="box" aria-labelledby="unggulan-title">
+        <h2 id="unggulan-title">Menu Rekomendasi &amp; Produk Unggulan</h2>
+        <p>Menu pilihan racikan barista Kopi Kampung yang paling diminati pelanggan:</p>
+        <div id="produk-unggulan" class="products-grid"></div>
       </section>
 
       <section class="box" aria-labelledby="katalog-title">

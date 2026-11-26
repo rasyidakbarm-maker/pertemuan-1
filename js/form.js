@@ -251,7 +251,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  // Event listener realtime untuk radio group
+  // Event listener realtime untuk radio group (change dan saat fokus berpindah keluar / focusout)
   document.querySelectorAll("input[name='topik']").forEach((radio) => {
     radio.addEventListener("change", () => {
       document.querySelectorAll("input[name='topik']").forEach((r) => r.setCustomValidity(""));
@@ -259,12 +259,30 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
+  const fieldsetTopikEl = document.querySelector("#fieldsetTopik");
+  if (fieldsetTopikEl) {
+    fieldsetTopikEl.addEventListener("focusout", (e) => {
+      if (!fieldsetTopikEl.contains(e.relatedTarget)) {
+        validateRadioGroup("topik", "fieldsetTopik", "topik-error", "Silakan pilih salah satu topik pertanyaan.");
+      }
+    });
+  }
+
   document.querySelectorAll("input[name='waktuKontak']").forEach((radio) => {
     radio.addEventListener("change", () => {
       document.querySelectorAll("input[name='waktuKontak']").forEach((r) => r.setCustomValidity(""));
       validateRadioGroup("waktuKontak", "fieldsetWaktu", "waktuKontak-error", "Silakan pilih salah satu preferensi waktu kontak.");
     });
   });
+
+  const fieldsetWaktuEl = document.querySelector("#fieldsetWaktu");
+  if (fieldsetWaktuEl) {
+    fieldsetWaktuEl.addEventListener("focusout", (e) => {
+      if (!fieldsetWaktuEl.contains(e.relatedTarget)) {
+        validateRadioGroup("waktuKontak", "fieldsetWaktu", "waktuKontak-error", "Silakan pilih salah satu preferensi waktu kontak.");
+      }
+    });
+  }
 
   // Handler Submit Formulir Kontak
   contactForm.addEventListener("submit", (event) => {

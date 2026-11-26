@@ -157,11 +157,17 @@ function buatEmptyState(kategoriAktif) {
 
   const emptyTitle = document.createElement("p");
   emptyTitle.classList.add("empty-title");
-  emptyTitle.textContent = `Tidak ada produk untuk kategori "${kategoriAktif}".`;
 
   const emptyDesc = document.createElement("p");
   emptyDesc.classList.add("empty-desc");
-  emptyDesc.textContent = "Silakan pilih kategori lain atau klik 'Semua' untuk melihat seluruh menu.";
+
+  if (!kategoriAktif || kategoriAktif.toLowerCase() === "semua") {
+    emptyTitle.textContent = "Belum ada produk yang tersedia saat ini.";
+    emptyDesc.textContent = "Katalog produk sedang dalam pembaruan atau belum ada data yang dimuat. Silakan periksa kembali nanti.";
+  } else {
+    emptyTitle.textContent = `Tidak ada produk untuk kategori "${kategoriAktif}".`;
+    emptyDesc.textContent = "Silakan pilih kategori lain atau klik 'Semua' untuk melihat seluruh menu.";
+  }
 
   emptyBox.append(emptyTitle, emptyDesc);
   return emptyBox;
@@ -292,8 +298,13 @@ function initNavToggle() {
 }
 
 // inisialisasi
-renderProduk("semua");
-initFilterKategori();
-renderKatalogProduk();
-renderKartuProdukDinamis();
-initNavToggle();
+if (document.querySelector('script[src*="catalog-api"]')) {
+  // Biarkan catalog-api.js yang mengelola katalog produk via Fetch API (P13)
+  initNavToggle();
+} else {
+  renderProduk("semua");
+  initFilterKategori();
+  renderKatalogProduk();
+  renderKartuProdukDinamis();
+  initNavToggle();
+}
